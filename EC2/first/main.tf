@@ -38,6 +38,10 @@ resource "aws_instance" "ngnix-server" {
               systemctl start nginx
               EOF
 
+  key_name = aws_key_pair.deployer.key_name
+
+  vpc_security_group_ids = [aws_security_group.nginx_security_group.id]
+
   tags = {
     Name     = "Nginx Server"
     NODE_ENV = var.environment
