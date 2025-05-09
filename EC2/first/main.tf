@@ -44,6 +44,12 @@ resource "aws_instance" "ngnix-server" {
   }
 }
 
+
+resource "aws_key_pair" "deployer" {
+  key_name   = "${var.server_name}-key"
+  public_key = file("${var.server_name}-key.pub")
+}
+
 resource "aws_security_group" "nginx_security_group" {
   description = "Security group for nginx server"
   name        = var.server_name
