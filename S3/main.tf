@@ -25,13 +25,14 @@ provider "aws" {
   region = "us-east-1"
 }
 
+# Recurso para generar un ID aleatorio
 resource "random_id" "bucket_suffix" {
   byte_length = 4
 }
 
 # Recurso para crear el bucket S3
 resource "aws_s3_bucket" "mi_bucket_s3" {
-  bucket = var.bucket_name
+  bucket = "${var.bucket_name}-${random_id.bucket_suffix.hex}"
   tags = {
     Name        = "Mi bucket"
     Environment = "Dev"
