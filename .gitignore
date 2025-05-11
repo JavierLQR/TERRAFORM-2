@@ -4,3 +4,4 @@ terraform.tfstate.backup
 .terraform
 nginx-server.key
 nginx-server.key.pub
+.terraform.tfstate.lock.info
