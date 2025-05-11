@@ -5,14 +5,6 @@ variable "type_instance" {
 }
 
 
-variable "environment" {
-  description = "Environment"
-  type        = string
-  default     = "dev"
-
-}
-
-
 variable "server_name" {
   description = "Server name"
   type        = string
