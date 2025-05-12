@@ -1,3 +1,5 @@
+
+# ES UNA PRACTICA DE TERRAFORM RECOMMENDED
 terraform {
   required_providers {
     aws = {
@@ -24,6 +26,7 @@ variable "bucket_name" {
 provider "aws" {
   region = "us-east-1"
 }
+
 
 # Recurso para generar un ID aleatorio
 resource "random_id" "bucket_suffix" {
@@ -73,4 +76,52 @@ output "name_bucket" {
   value       = aws_s3_bucket.mi_bucket_s3.id
   description = "Name of the bucket"
   sensitive   = false
+}
+
+resource "aws_iam_user" "dev_user" {
+  name = "dev_s3_user"
+  tags = {
+    Name        = "Mi bucket"
+    Environment = "Dev"
+  }
+}
+
+resource "aws_iam_policy" "dev_s3_policy" {
+  name        = "devS3Policy"
+  description = "Permite acceso Get/Put en el bucket dev"
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject"
+        ]
+        Resource = "${aws_s3_bucket.mi_bucket_s3.arn}/*"
+      }
+    ]
+  })
+}
+
+resource "aws_iam_policy_attachment" "dev_s3_policy_attachment" {
+  name       = "devS3PolicyAttachment"
+  users      = [aws_iam_user.dev_user.name]
+  policy_arn = aws_iam_policy.dev_s3_policy.arn
+}
+
+resource "aws_iam_access_key" "dev_access_key" {
+  user = aws_iam_user.dev_user.name
+}
+
+output "access_key_id" {
+  value       = aws_iam_access_key.dev_access_key.id
+  sensitive   = true
+  description = "Access Key para el usuario dev"
+}
+
+output "secret_access_key" {
+  value       = aws_iam_access_key.dev_access_key.secret
+  sensitive   = true
+  description = "Secret Key para el usuario dev"
 }
