@@ -43,12 +43,12 @@ resource "aws_s3_bucket" "mi_bucket_s3" {
 }
 
 # Configuración de ACL para el bucket
-resource "aws_s3_bucket_ownership_controls" "mi_bucket_ownership_controls" {
-  bucket = aws_s3_bucket.mi_bucket_s3.id
-  rule {
-    object_ownership = "BucketOwnerEnforced"
-  }
-}
+# resource "aws_s3_bucket_ownership_controls" "mi_bucket_ownership_controls" {
+#   bucket = aws_s3_bucket.mi_bucket_s3.id
+#   rule {
+#     object_ownership = "BucketOwnerEnforced"
+#   }
+# }
 
 # Configuración de ACL para el bucket
 resource "aws_s3_bucket_public_access_block" "mi_bucket_public_access_block" {
@@ -61,16 +61,15 @@ resource "aws_s3_bucket_public_access_block" "mi_bucket_public_access_block" {
 }
 
 # Configuración de ACL para el bucket
-# resource "aws_s3_bucket_acl" "mi_bucket_acl" {
-#   depends_on = [
-#     aws_s3_bucket_ownership_controls.mi_bucket_ownership_controls,
-#     aws_s3_bucket_public_access_block.mi_bucket_public_access_block
-#   ]
+resource "aws_s3_bucket_acl" "mi_bucket_acl" {
+  depends_on = [
+    aws_s3_bucket_public_access_block.mi_bucket_public_access_block
+  ]
 
-#   bucket = aws_s3_bucket.mi_bucket_s3.id
-#   acl    = "public-read"
+  bucket = aws_s3_bucket.mi_bucket_s3.id
+  acl    = "public-read"
 
-# }
+}
 
 output "name_bucket" {
   value       = aws_s3_bucket.mi_bucket_s3.id
