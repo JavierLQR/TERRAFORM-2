@@ -30,7 +30,7 @@ provider "aws" {
 
 # Recurso para generar un ID aleatorio
 resource "random_id" "bucket_suffix" {
-  byte_length = 4
+  byte_length = 2
 }
 
 # Recurso para crear el bucket S3
