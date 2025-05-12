@@ -84,11 +84,6 @@ resource "aws_s3_bucket_acl" "mi_bucket_acl" {
 
 }
 
-output "name_bucket" {
-  value       = aws_s3_bucket.mi_bucket_s3.id
-  description = "Name of the bucket"
-  sensitive   = false
-}
 
 resource "aws_iam_user" "dev_user" {
   name = "dev_s3_user"
@@ -103,14 +98,3 @@ resource "aws_iam_access_key" "dev_access_key" {
   user = aws_iam_user.dev_user.name
 }
 
-output "access_key_id" {
-  value       = aws_iam_access_key.dev_access_key.id
-  sensitive   = true
-  description = "Access Key para el usuario dev"
-}
-
-output "secret_access_key" {
-  value       = aws_iam_access_key.dev_access_key.secret
-  sensitive   = true
-  description = "Secret Key para el usuario dev"
-}
