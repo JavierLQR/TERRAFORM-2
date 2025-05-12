@@ -74,6 +74,7 @@ resource "aws_s3_bucket_public_access_block" "mi_bucket_public_access_block" {
 
 # Configuración de ACL para el bucket
 resource "aws_s3_bucket_acl" "mi_bucket_acl" {
+
   depends_on = [
     aws_s3_bucket_public_access_block.mi_bucket_public_access_block
   ]
