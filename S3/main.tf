@@ -16,12 +16,6 @@ terraform {
 }
 
 
-variable "bucket_name" {
-  type        = string
-  description = "Name of the bucket"
-  default     = "my-bucket-unique-123"
-}
-
 
 provider "aws" {
   region = "us-east-1"
@@ -85,15 +79,16 @@ resource "aws_s3_bucket_acl" "mi_bucket_acl" {
 }
 
 
+# Crear el usuario iam para el bucket
 resource "aws_iam_user" "dev_user" {
-  name = "dev_s3_user"
+  name = var.name_user
   tags = {
     Name        = "Mi bucket"
     Environment = "Dev"
   }
 }
 
-
+# Configuración de ACCESS KEY y secret KEY para el usuario
 resource "aws_iam_access_key" "dev_access_key" {
   user = aws_iam_user.dev_user.name
 }

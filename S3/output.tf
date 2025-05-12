@@ -16,3 +16,11 @@ output "name_bucket" {
   description = "Name of the bucket"
   sensitive   = false
 }
+
+
+output "name_user" {
+  value       = aws_iam_user.dev_user.name
+  description = "Name of the user"
+  sensitive   = false
+
+}
