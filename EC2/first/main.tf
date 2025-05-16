@@ -103,17 +103,18 @@ data "aws_ami" "amazon_linux_2" {
   }
 }
 
-# IAM Role para ECR acceso
+# ✅ 1. Crear un rol IAM para que la instancia EC2 pueda asumirlo
 resource "aws_iam_role" "ec2_ecr_access" {
-  name = "ec2-ecr-access-role"
+  name = "ec2-ecr-access-role" # Nombre del rol
 
+  # Política de confianza: define quién puede asumir este rol (en este caso, EC2)
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
-      Action = "sts:AssumeRole",
+      Action = "sts:AssumeRole", # Acción que permite asumir el rol
       Effect = "Allow",
       Principal = {
-        Service = "ec2.amazonaws.com"
+        Service = "ec2.amazonaws.com" # Este rol puede ser asumido por instancias EC2
       }
     }]
   })
