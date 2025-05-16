@@ -119,23 +119,24 @@ resource "aws_iam_role" "ec2_ecr_access" {
     }]
   })
 }
-
+# ✅ 2. Asignar una política al rol para permitirle acceder a ECR
 resource "aws_iam_role_policy" "ecr_policy" {
-  name = "ecr-access"
-  role = aws_iam_role.ec2_ecr_access.id
+  name = "ecr-access"                   # Nombre de la política
+  role = aws_iam_role.ec2_ecr_access.id # Asocia la política al rol creado arriba
 
+  # Política en formato JSON que define los permisos
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
         Effect = "Allow",
         Action = [
-          "ecr:GetAuthorizationToken",
-          "ecr:BatchCheckLayerAvailability",
-          "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage"
+          "ecr:GetAuthorizationToken",       # Obtener token para autenticarse en ECR
+          "ecr:BatchCheckLayerAvailability", # Verificar disponibilidad de capas de imagen
+          "ecr:GetDownloadUrlForLayer",      # Obtener URLs para descargar capas
+          "ecr:BatchGetImage"                # Obtener la imagen del contenedor desde ECR
         ],
-        Resource = "*"
+        Resource = "*" # Aplica a todos los repositorios ECR del usuario
       }
     ]
   })
