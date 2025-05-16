@@ -142,9 +142,11 @@ resource "aws_iam_role_policy" "ecr_policy" {
   })
 }
 
+
+# ✅ 3. Crear un Instance Profile que asocie el rol a una instancia EC2
 resource "aws_iam_instance_profile" "ec2_ecr_profile" {
-  name = "ec2-ecr-profile"
-  role = aws_iam_role.ec2_ecr_access.name
+  name = "ec2-ecr-profile"                # Nombre del perfil
+  role = aws_iam_role.ec2_ecr_access.name # Asocia el perfil al rol creado anteriormente
 }
 
 # Security Group
