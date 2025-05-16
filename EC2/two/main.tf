@@ -53,7 +53,7 @@ resource "aws_iam_role" "ec2_ecr_access" {
     }]
   })
 }
-
+# IAM Policy
 resource "aws_iam_role_policy" "ecr_policy" {
   name = "ecr-access"
   role = aws_iam_role.ec2_ecr_access.id
@@ -75,6 +75,7 @@ resource "aws_iam_role_policy" "ecr_policy" {
   })
 }
 
+# IAM Instance Profile
 resource "aws_iam_instance_profile" "ec2_ecr_profile" {
   name = "ec2-ecr-profile"
   role = aws_iam_role.ec2_ecr_access.name
