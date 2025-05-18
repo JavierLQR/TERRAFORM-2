@@ -13,6 +13,7 @@ variable "db_password" {
 variable "db_name" {
   default = "mydatabase"
 }
+
 provider "aws" {
   region = "us-east-1"
 }
