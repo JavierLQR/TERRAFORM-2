@@ -6,3 +6,4 @@ nginx-server.key
 nginx-server.key.pub
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
+easy-rsa
