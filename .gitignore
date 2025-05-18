@@ -1,7 +1,8 @@
-.terraform.lock.hcl
+cd .terraform.lock.hcl
 terraform.tfstate
 terraform.tfstate.backup
 .terraform
 nginx-server.key
 nginx-server.key.pub
 .terraform.tfstate.lock.info
+.terraform.lock.hcl
