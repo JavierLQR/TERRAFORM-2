@@ -1,14 +1,28 @@
+variable "vpc_cidr" {
+  description = "CIDR block for the VPC"
+  default     = "10.0.0.0/16"
+}
+
+variable "db_username" {
+  description = "RDS master username"
+
+  default = "admin"
+}
+
+variable "db_password" {
+  description = "RDS master password"
+  sensitive   = true
+  default     = "YourSecurePassword123"
+}
 
 
-
-
-
-
-
-
-
-
-
+variable "db_name" {
+  description = "Database name"
+  default     = "mydb"
+}
+provider "aws" {
+  region = "us-east-1"
+}
 
 
 
