@@ -129,3 +129,11 @@ resource "aws_ec2_client_vpn_authorization_rule" "vpn_auth" {
   target_network_cidr    = aws_vpc.main.cidr_block
   authorize_all_groups   = true
 }
+
+output "rds_endpoint" {
+  value = aws_db_instance.postgres.endpoint
+}
+
+output "vpn_endpoint" {
+  value = aws_ec2_client_vpn_endpoint.vpn.dns_name
+}
