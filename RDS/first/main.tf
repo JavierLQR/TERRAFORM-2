@@ -1,3 +1,7 @@
+variable "region" {
+  default = "us-east-1"
+}
+
 provider "aws" {
   region = "us-east-1"
 }
@@ -43,3 +47,27 @@ resource "aws_db_subnet_group" "main" {
 }
 
 
+
+resource "aws_db_instance" "postgres" {
+  identifier             = "my-postgres-db"
+  allocated_storage      = 20
+  engine                 = "postgres"
+  engine_version         = "15.2"
+  instance_class         = "db.t3.micro"
+  db_name                = "mydatabase"
+  username               = "admin"
+  password               = "mysecretpassword"
+  db_subnet_group_name   = aws_db_subnet_group.main.name
+  vpc_security_group_ids = [aws_security_group.rds_sg.id]
+  skip_final_snapshot    = true
+  publicly_accessible    = false
+}
+
+
+# VPN (resumido, verás detalles en otro archivo)
+module "vpn" {
+  source     = "terraform-aws-modules/vpn/aws"
+  name       = "vpn"
+  vpc_id     = aws_vpc.main.id
+  subnet_ids = [aws_subnet.private.id]
+}
