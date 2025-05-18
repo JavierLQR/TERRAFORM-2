@@ -33,3 +33,13 @@ resource "aws_security_group" "rds_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+
+
+# RDS PostgreSQL
+resource "aws_db_subnet_group" "main" {
+  name       = "rds-subnet-group"
+  subnet_ids = [aws_subnet.private.id]
+}
+
+
