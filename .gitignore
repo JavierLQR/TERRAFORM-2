@@ -7,3 +7,5 @@ nginx-server.key.pub
 .terraform.tfstate.lock.info
 .terraform.lock.hcl
 easy-rsa
+terraform.tfstate.1747617398.backup
+terraform.tfstate.1747617398
