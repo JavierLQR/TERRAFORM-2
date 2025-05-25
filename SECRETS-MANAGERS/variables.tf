@@ -7,6 +7,5 @@ variable "env" {
     condition     = contains(["dev", "prod"], var.env)
     error_message = "Environment must be either 'dev' or 'prod'."
   }
-
 }
 
