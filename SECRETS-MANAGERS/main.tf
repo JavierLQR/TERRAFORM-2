@@ -23,7 +23,6 @@ resource "random_password" "db_password" {
   override_special = "_%@"
   upper            = true
 
-
 }
 
 
@@ -42,4 +41,5 @@ resource "aws_secretsmanager_secret_version" "db_password" {
   secret_string = jsonencode({
     password = random_password.db_password.result
   })
+
 }
