@@ -1,6 +1,6 @@
 variable "env" {
   description = "Environment name (e.g., dev, prod)"
-  default     = "dev"
+  default     = "dev-test"
   type        = string
   nullable    = false
   validation {
