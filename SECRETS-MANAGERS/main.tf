@@ -28,18 +28,18 @@ resource "random_password" "db_password" {
 
 
 resource "aws_secretsmanager_secret" "db_password" {
-  name        = "${var.env}-db-password"
+  name        = "${var.env_test}-db-password"
   description = "RDS database password"
 
   tags = {
-    Environment = var.env
+    Environment = var.env_test
   }
 
 }
 
 resource "aws_secretsmanager_secret_version" "db_password" {
   secret_id = aws_secretsmanager_secret.db_password.id
-  secret_string = jsondecode({
+  secret_string = jsonencode({
     password = random_password.db_password.result
   })
 }
