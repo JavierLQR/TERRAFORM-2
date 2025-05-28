@@ -24,18 +24,23 @@ resource "aws_secretsmanager_secret_version" "RABBIT_URL" {
   })
 
 }
+
 # Outputs for the RabbitMQ URL secret
 output "rabbitmq_url_arn" {
   description = "ARN of the RabbitMQ URL secret"
   value       = aws_secretsmanager_secret.RABBIT_URL.arn
 
 }
+
+
 # Outputs for the RabbitMQ URL secret version
 output "rabbitmq_url" {
   description = "RabbitMQ URL secret value"
   value       = aws_secretsmanager_secret_version.RABBIT_URL.secret_string
   sensitive   = true
 }
+
+
 # Outputs for the RabbitMQ URL secret version ID
 output "rabbitmq_url_version_id" {
   description = "Version ID of the RabbitMQ URL secret"
