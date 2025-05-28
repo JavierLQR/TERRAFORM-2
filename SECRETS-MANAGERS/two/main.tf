@@ -33,7 +33,6 @@ output "rabbitmq_url_arn" {
 }
 
 
-# Outputs for the RabbitMQ URL secret version
 output "rabbitmq_url" {
   description = "RabbitMQ URL secret value"
   value       = aws_secretsmanager_secret_version.RABBIT_URL.secret_string
