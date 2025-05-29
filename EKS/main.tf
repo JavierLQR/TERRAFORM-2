@@ -3,6 +3,3 @@ provider "aws" {
 
 }
 
-module "eks" {
-  source = "./modules/eks"
-}
