@@ -18,5 +18,5 @@ variable "region_name" {
 variable "cluster_name" {
   description = "Cluster name"
   type        = string
-  default     = "my-cluster-${var.node_env}"
+  default     = "my-cluster-test"
 }
