@@ -20,3 +20,11 @@ variable "cluster_name" {
   type        = string
   default     = "my-cluster-test"
 }
+
+
+variable "owner" {
+  description = "Owner of the cluster"
+  type        = string
+  default     = "team-a"
+
+}
