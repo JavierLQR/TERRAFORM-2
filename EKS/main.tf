@@ -53,7 +53,10 @@ module "eks" {
   }
 
   tags = {
-    Environment = "dev"
+    Environment = var.node_env
     Terraform   = "true"
+    Name        = "nestjs-terraform-eks-cluster"
+    Owner       = var.owner
+
   }
 }
