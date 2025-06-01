@@ -44,11 +44,11 @@ module "eks" {
   # OIDC (enabled by default en v20+)
   enable_irsa = true
   eks_managed_node_groups = {
-    default = {
+    ng-1 = {
       desired_size   = 2
       min_size       = 1
       max_size       = 3
-      instance_types = ["t3.small"]
+      instance_types = ["t3.medium"]
     }
   }
 
