@@ -37,7 +37,7 @@ module "eks" {
   version = "20.8.5"
 
   cluster_name    = "nestjs-terraform-eks-cluster"
-  cluster_version = "1.31"
+  cluster_version = "1.32"
   subnet_ids      = module.vpc.private_subnets
   vpc_id          = module.vpc.vpc_id
 
