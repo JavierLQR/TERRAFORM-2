@@ -56,6 +56,7 @@ module "eks" {
   cluster_endpoint_public_access  = true
   cluster_endpoint_private_access = true
 
+
   tags = {
     Environment = var.node_env
     Terraform   = "true"
@@ -63,4 +64,21 @@ module "eks" {
     Owner       = var.owner
 
   }
+}
+
+module "aws_auth" {
+  source  = "terraform-aws-modules/eks/aws//modules/aws-auth"
+  version = "20.8.5"
+
+  manage_aws_auth_configmap = true
+
+  aws_auth_users = [
+    {
+      userarn  = "arn:aws:iam::222634373780:root"
+      username = "root"
+      groups   = ["system:masters"]
+    }
+  ]
+
+  depends_on = [module.eks]
 }
