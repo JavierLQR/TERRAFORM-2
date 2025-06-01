@@ -52,7 +52,7 @@ module "eks" {
       instance_types = ["t3.medium"]
     }
   }
-
+  # EKS probar conectar with VPC CNI
   cluster_endpoint_public_access  = true
   cluster_endpoint_private_access = true
 
@@ -65,7 +65,7 @@ module "eks" {
 
   }
 }
-
+# aws-auth to configure kubectl
 module "aws_auth" {
   source  = "terraform-aws-modules/eks/aws//modules/aws-auth"
   version = "20.8.5"
