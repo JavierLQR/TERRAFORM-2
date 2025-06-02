@@ -76,11 +76,10 @@ module "eks" {
 # ================================
 
 resource "null_resource" "update_kubeconfig" {
-  depends_on = [module.eks] # Asegura que se ejecute después de crear el cluster
+  depends_on = [module.eks] # Espera a que el módulo EKS esté completamente creado antes de ejecutar
 
   provisioner "local-exec" {
-    command = "aws eks update-kubeconfig --region us-east-1 --name nestjs-eks-cluster"
-    # Ejecuta el comando que configura tu kubectl con este cluster
+    command = "aws eks update-kubeconfig --region us-east-1 --name nestjs-eks-cluster" # Ejecuta en tu máquina local el comando que configura tu kubectl apuntando al cluster EKS creado
+    # Este comando agrega (o actualiza) una entrada en tu archivo ~/.kube/config para que kubectl sepa cómo conectarse al cluster
   }
 }
-
