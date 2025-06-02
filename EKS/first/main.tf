@@ -15,6 +15,7 @@ provider "aws" {
   region = var.region_name
 }
 
+resource "random_pet" "this" {}
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
