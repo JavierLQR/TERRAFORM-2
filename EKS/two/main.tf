@@ -28,7 +28,6 @@ module "vpc" {
   }
 }
 
-
 # EKS Module
 # ================================
 # Módulo de EKS (Amazon Kubernetes Service)
@@ -55,13 +54,14 @@ module "eks" {
   # ================================
   eks_managed_node_groups = {
     ng-1 = {
-      name           = "ng-1"        # Nombre del grupo de nodos
-      instance_types = ["t3.medium"] # Tipo de instancia EC2 para los nodos
-      desired_size   = 2             # Cuántas instancias deseas iniciar inicialmente
-      min_size       = 1             # Escalado mínimo
-      max_size       = 3             # Escalado máximo
-      capacity_type  = "ON_DEMAND"   # Tipo de capacidad: bajo demanda
-      disk_size      = 20            # Tamaño del disco en GB
+      name = "ng-1" # Nombre del grupo de nodos
+      # instance_types = ["t3.medium"] # Tipo de instancia EC2 para los nodos
+      instance_types = [var.type_instance] # Tipo de instancia EC2 para los nodos
+      desired_size   = 2                   # Cuántas instancias deseas iniciar inicialmente
+      min_size       = 1                   # Escalado mínimo
+      max_size       = 3                   # Escalado máximo
+      capacity_type  = "ON_DEMAND"         # Tipo de capacidad: bajo demanda
+      disk_size      = 20                  # Tamaño del disco en GB
     }
   }
 
