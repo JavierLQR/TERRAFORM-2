@@ -31,6 +31,5 @@ variable "owner" {
   description = "Owner of the cluster"
   sensitive   = false
   nullable    = false
-  type        = string
 
 }
