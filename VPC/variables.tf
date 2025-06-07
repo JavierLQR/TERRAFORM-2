@@ -17,3 +17,20 @@ variable "node_env" {
   type        = string
 
 }
+
+variable "team" {
+  default     = "team-a"
+  description = "Team name"
+  sensitive   = false
+  nullable    = false
+  type        = string
+}
+
+variable "owner" {
+  default     = "rodrigo-${var.team}"
+  description = "Owner of the cluster"
+  sensitive   = false
+  nullable    = false
+  type        = string
+
+}
