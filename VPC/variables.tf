@@ -18,10 +18,3 @@ variable "node_env" {
 
 }
 
-variable "team" {
-  default     = "team-a"
-  description = "Team name"
-  sensitive   = false
-  nullable    = false
-  type        = string
-}
