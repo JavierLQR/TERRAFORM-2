@@ -25,11 +25,3 @@ variable "team" {
   nullable    = false
   type        = string
 }
-
-variable "owner" {
-  default     = "rodrigo-${var.team}"
-  description = "Owner of the cluster"
-  sensitive   = false
-  nullable    = false
-
-}
