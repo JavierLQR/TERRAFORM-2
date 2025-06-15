@@ -22,3 +22,12 @@ variable "team" {
   type        = string
 }
 
+
+variable "vpc_name" {
+  default     = "my-vpc"
+  description = "Name of the VPC"
+  sensitive   = false
+  nullable    = false
+  type        = string
+
+}
