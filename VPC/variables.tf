@@ -3,6 +3,7 @@ variable "region" {
   default     = "us-east-1"
   type        = string
   nullable    = false
+  sensitive   = false
 }
 
 variable "node_env" {
