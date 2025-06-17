@@ -16,8 +16,8 @@ variable "node_env" {
 }
 
 variable "team" {
-  default     = "team-a"
-  description = "Team name"
+  default     = "only-rodrigo"
+  description = "Team name (e.g., dev, prod)"
   sensitive   = false
   nullable    = false
   type        = string
@@ -25,7 +25,7 @@ variable "team" {
 
 
 variable "vpc_name" {
-  default     = "my-vpc"
+  default     = "my-vpc-test"
   description = "Name of the VPC"
   sensitive   = false
   nullable    = false
