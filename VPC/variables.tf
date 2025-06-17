@@ -17,7 +17,7 @@ variable "node_env" {
 
 variable "team" {
   default     = "only-rodrigo"
-  description = "Team name (e.g., dev, prod)"
+  description = "Team name"
   sensitive   = false
   nullable    = false
   type        = string
