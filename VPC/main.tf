@@ -6,7 +6,7 @@ resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr_block
 
   tags = {
-    Name = "MiVPC",
+    Name     = "${var.vpc_name}-${var.node_env}-${var.team}",
     OwnendBy = var.team
   }
 }
