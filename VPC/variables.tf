@@ -9,6 +9,7 @@ variable "region" {
 variable "node_env" {
   default     = "dev"
   description = "Environment name (e.g., dev, prod)"
+  nullable    = false
   type        = string
 
 }
