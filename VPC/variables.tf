@@ -16,10 +16,11 @@ variable "node_env" {
 }
 
 variable "team" {
-  default   = "only-rodrigo"
-  sensitive = false
-  nullable  = false
-  type      = string
+  default     = "only-rodrigo"
+  description = "Team name"
+  sensitive   = false
+  nullable    = false
+  type        = string
 }
 
 
