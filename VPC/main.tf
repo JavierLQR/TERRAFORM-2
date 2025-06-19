@@ -37,7 +37,9 @@ resource "aws_route_table" "public" {
     gateway_id = aws_internet_gateway.igw.id
   }
 
-
+  tags = {
+    Name = "PublicRouteTable"
+  }
 }
 
 resource "aws_route_table_association" "a" {
