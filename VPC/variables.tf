@@ -2,7 +2,6 @@ variable "region" {
   description = "AWS region to deploy resources"
   default     = "us-east-1"
   type        = string
-  nullable    = false
   sensitive   = false
 }
 
