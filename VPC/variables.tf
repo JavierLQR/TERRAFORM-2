@@ -18,6 +18,7 @@ variable "team" {
   default     = "only-rodrigo"
   description = "Team name"
   sensitive   = false
+  nullable    = false
   type        = string
 }
 
